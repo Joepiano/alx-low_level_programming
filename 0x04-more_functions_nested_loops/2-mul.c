@@ -7,7 +7,7 @@
  * Return: result (product of both integers)
  */
 
-int mul(int a, int b);
+int mul(int a, int b)
 {
 	int c;
 	
