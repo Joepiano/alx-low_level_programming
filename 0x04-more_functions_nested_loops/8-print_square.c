@@ -1,27 +1,26 @@
 #include <stdio.h>
+#include <math.h>
 
 /**
- * print_square - prints a square followed by a new line;
- * @size: length and width of square
- * Return: void
- */
-
-void print_square(int size)
+  * main - Prints the largest prime factor of the number 612852475143
+  *
+  * Return: Always 0 (Success)
+  */
+int main(void)
 {
-	if (size <= 0)
-	{
-		_putchar('\n');
-	} else
-	{
-		int row, column;
+	long x, maxf;
+	long number = 612852475143;
+	double square = sqrt(number);
 
-		for (row = 0; row < size; row++)
+	for (x = 1; x <= square; x++)
+	{
+		if (number % x == 0)
 		{
-			for (column = 0; column < size; column++)
-			{
-				_putchar('#');
-			}
-			_putchar('\n');
+			maxf = number / x;
 		}
 	}
+
+	printf("%ld\n", maxf);
+
+	return (0);
 }
