@@ -21,8 +21,3 @@ void more_numbers(void)
 		_putchar('\n');
 	}
 }
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Stat
