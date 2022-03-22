@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: string
- * Return: lenth of string
+ * _puts - prints a string, followed by a new line
+ * @str: string
+ * Return: void
  */
 
-int _strlen(char *s)
+void _puts(char *str)
 {
-	int len = 0;
+	int i;
 
-	while (s[len] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		len++;
+		_putchar(str[i]);
 	}
 
-	return (len);
+	_putchar('\n');
 }
