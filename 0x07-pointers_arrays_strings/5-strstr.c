@@ -28,3 +28,4 @@ char *_strstr(char *haystack, char *needle)
 		haystack = str1 + 1;
 	}
 	return 
+	}
