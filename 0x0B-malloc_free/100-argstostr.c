@@ -1,47 +1,84 @@
-#include "main.h"
+#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * argstostr - concatenates all the arguments of your program
- * @ac: argument count in main
- * @av: arguments passed to main
+ * _wcount - counts number of words
+ * @sw: string
+ *
+ * Return: int
+ */
+int _wcount(char *sw)
+{
+	int l, wc;
+
+	l = 0, wc = 0;
+	if (*(sw + l) == ' ')
+		l++;
+	while (*(sw + l))
+	{
+		if (*(sw + l) == ' ' && *(sw + l - 1) != ' ')
+			wc++;
+		if (*(sw + l) != ' '  && *(sw + l + 1) == 0)
+			wc++;
+		l++;
+	}
+	return (wc);
+}
+/**
+ * _trspace - Moves adress to remove trailig whitespaces
+ * @st: string
  *
  * Return: Pointer
  */
-char *argstostr(int ac, char **av)
+char *_trspace(char *st)
 {
-	char *s;
-	int l, lt, i, j, k;
+	while (*st == ' ')
+		st++;
+	return (st);
+}
+/**
+ * strtow - splits a string into words
+ * @str: string
+ *
+ * Return: Double Pointer
+ */
+char **strtow(char *str)
+{
+	char **s, *ts;
+	int l, l2, wc, i, j, fr, k;
 
-	if (ac == 0 || av == NULL)
+	if (str == NULL || *str == 0)
 		return (0);
-	l = 0, k = 0;
-	for (i = 0; i < ac; i++)
-	{
-		lt = 0;
-		while (av[i][lt])
-			lt++;
-		l += lt + 1;
-	}
-	s = malloc((l + 1) * sizeof(char));
-
+	fr = 0;
+	wc = _wcount(str);
+	if (wc == 0)
+		return (0);
+	s = malloc((wc + 1) * sizeof(char *));
 	if (s == 0)
 		return (0);
-
-	for (j = 0; j < ac; j++)
+	ts = _trspace(str);
+	for (i = 0; i < wc; i++)
 	{
-		lt = 0;
-		while (av[j][lt])
+		l = 0;
+		while (*(ts + l) != ' ' && *(ts + l) != 0)
+			l++;
+		s[i] = malloc((l + 1) * sizeof(char));
+		if (s[i] == 0)
 		{
-			*(s + k) = av[j][lt];
-			k++;
-			lt++;
+			fr = 1;
+			break;
 		}
-		*(s + k) = '\n';
-		k++;
+		for (j = 0, l2 = 0; l2 < l; l2++, j++)
+			s[i][j] = *(ts + l2);
+		s[i][j] = '\0';
+		ts = _trspace(ts + l);
 	}
-	*(s + k) = '\0';
-
+	s[i] = NULL;
+	if (fr == 1)
+	{
+		for (k = 0; k <= i; k++)
+			free(s[k]);
+		free(s);
+	}
 	return (s);
 }
