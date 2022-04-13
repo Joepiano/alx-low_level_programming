@@ -1,4 +1,4 @@
-ii#include "3-calc.h"
+#include "3-calc.h"
 #include <stddef.h>
 #include <stdio.h>
 
@@ -27,4 +27,4 @@ int (*get_op_func(char *s))(int, int)
 		i++;
 
 	return (ops[i].f);
-}i
+}
