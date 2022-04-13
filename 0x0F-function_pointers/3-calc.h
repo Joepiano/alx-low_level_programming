@@ -23,6 +23,3 @@ int op_mul(int a, int b);
 int op_div(int a, int b);
 int op_mod(int a, int b);
 #endif
-© 2022 GitHub, Inc.
-Terms
-Priv
